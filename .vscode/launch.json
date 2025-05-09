@@ -1,0 +1,39 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "pdf_3d_viewer",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "deneme",
+            "cwd": "deneme",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "deneme (profile mode)",
+            "cwd": "deneme",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "deneme (release mode)",
+            "cwd": "deneme",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "Dart (lib\\main.dart)",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib\\main.dart"
+        }
+    ]
+}
