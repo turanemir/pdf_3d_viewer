@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'loginPage.dart';
 import 'package:pdf_3d_viewer/files/income_page.dart';
-
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -16,6 +16,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   DateTime? _selectedDate;
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -32,29 +34,41 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  void _register() {
-  if (_formKey.currentState!.validate()) {
-    if (_selectedDate == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Lütfen doğum tarihinizi seçin.')),
-      );
-      return;
+  void _register() async {
+    if (_formKey.currentState!.validate()) {
+      if (_selectedDate == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Lütfen doğum tarihinizi seçin.')),
+        );
+        return;
+      }
+
+      try {
+        final String email = _emailController.text.trim();
+        final String password = _passwordController.text.trim();
+
+        UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+
+        if (userCredential.user != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Kayıt başarılı!')),
+          );
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const IncomePage()),
+          );
+        }
+      } on FirebaseAuthException catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Hata: ${e.message}')),
+        );
+      }
     }
-
-    // Kayıt başarılı mesajı
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Kayıt başarılı!')),
-    );
-
-    // Aylık gelir ekranına yönlendir
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const IncomePage()),
-      
-    );
   }
-}
-
 
   @override
   Widget build(BuildContext context) {

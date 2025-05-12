@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "841051632794",
+    "firebase_url": "https://butceplanlama-d619c-default-rtdb.firebaseio.com",
+    "project_id": "butceplanlama-d619c",
+    "storage_bucket": "butceplanlama-d619c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841051632794:android:9210afc2b226413d4f1b23",
+        "android_client_info": {
+          "package_name": "com.example.pdf_3d_viewer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7PYA6U3WNzC9xod0arKzXhWWvxG2RfWE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

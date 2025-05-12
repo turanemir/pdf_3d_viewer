@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'gider_ekrani.dart';
 class IncomePage extends StatefulWidget {
   const IncomePage({super.key});
 
@@ -17,7 +17,12 @@ class _IncomePageState extends State<IncomePage> {
         SnackBar(content: Text("Geliriniz kaydedildi: ₺$income")),
       );
       // Burada yönlendirme veya veri kaydetme işlemi yapılabilir
+       Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const GiderEkrani()),
+    );
     }
+
   }
 
   @override

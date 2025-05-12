@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'ozet_sayfasi.dart';
 
 class GiderEkrani extends StatefulWidget {
   const GiderEkrani({super.key});
@@ -116,6 +117,22 @@ class _GiderEkraniState extends State<GiderEkrani> {
                     ),
                   );
                 },
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            // Kaydet ve Devam Et Butonu
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const OzetSayfasi()),
+                  );
+                },
+                child: const Text("Kaydet ve Devam Et"),
               ),
             ),
           ],
